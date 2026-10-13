@@ -1,7 +1,3 @@
----
-layout: default
----
-
 www.linkedin.com/in/daemon-adams
 
 ## **Azure Honeypot Detection Lab (Microsoft Sentinel)**
@@ -43,12 +39,14 @@ I'm building real-world defensive security skills, cloud logging, threat detecti
 
 ## Visualization Output
 Here’s a sample of the attack map generated in Sentinel using enriched GeoIP telemetry:
-![Image](Attack Map.png)
+
+![Attack-Map.png](Images/Attack-Map.png)
 
 
 ## Real-time Visual
 This is a prime example of a attacker named "marco" trying to access my workstation. He or she is seen trying to log in to my vm. When i look up their IP Address. I get the location of *Russia, Saint-Petersburg*.
-![Image](Pasted image 20250801201906.png)
+
+![Failed-Logon.png](Images/Failed-Logon.png)
 
 
 ## KQL query
@@ -65,7 +63,11 @@ WindowsEvents
 | project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, longitude, latitude
 ```
 This query extracts failed login attempts tied to a User conor external IP address *the attacker who tried to login*. This query correlates these events with a GeoIP watchlist, and outputs relevant metadata such as host machine, timestamp, and geolocation of the attack source.
-![Image](Pasted image 20250801213402.png)
+
+
+![Failed-Logon2.png](Images/Failed-Logon2.png)
 
 The picture below is a KQL query that i imported to help specify the countryname, cityname, statename and etc. of each corresponding IP address
-![Image](KQL query.png)
+
+
+![KQL-query.png](Images/KQL-query.png)
